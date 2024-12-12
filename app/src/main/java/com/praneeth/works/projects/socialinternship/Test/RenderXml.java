@@ -19,44 +19,51 @@ import java.io.IOException;
 public class RenderXml {
 
     public static void exportToPdf(Context context) {
+
         LayoutInflater inflater = LayoutInflater.from(context);
-        View contentView = inflater.inflate(R.layout.test_layout1,null);
+        View contentView = inflater.inflate(R.layout.house_servey_form, null);
 
         contentView.measure(
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         );
-        contentView.layout(0,0,contentView.getMeasuredWidth(),contentView.getMeasuredHeight());
+        contentView.layout(0, 0, contentView.getMeasuredWidth(), contentView.getMeasuredHeight());
 
-        int contentWidth=contentView.getMeasuredWidth();
-        int contentHeight=contentView.getMeasuredHeight();
+        int contentWidth = contentView.getMeasuredWidth();
+        int contentHeight = contentView.getMeasuredHeight();
 
-        int pageWidth=1080;
-        int pageHeight=1920;
+        int pageWidth = 1080;
+        int pageHeight = 1920;
 
-        PdfDocument pdfDocument=new PdfDocument();
+        int padding = 50;
+        int effectiveWidth = contentWidth - (2 * padding);
+        int effectiveHeight = pageHeight - (2 * padding);
 
-        int currentTop=0;
-        while (currentTop<contentHeight) {
-            Bitmap bitmap=Bitmap.createBitmap(contentWidth, pageHeight, Bitmap.Config.ARGB_8888);
-            Canvas canvas=new Canvas(bitmap);
+        PdfDocument pdfDocument = new PdfDocument();
 
-            canvas.translate(0,-currentTop);
-            contentView.draw(canvas);
+        int currentTop = 0;
 
-            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pdfDocument.getPages().size() + 1).create();
-            PdfDocument.Page page =pdfDocument.startPage(pageInfo);
+        while (currentTop < contentHeight) {
+            Bitmap bitmap = Bitmap.createBitmap(contentWidth, effectiveHeight, Bitmap.Config.ARGB_8888);
+            Canvas bitmapCanvas = new Canvas(bitmap);
 
-            page.getCanvas().drawBitmap(bitmap,0,0,null);
+            bitmapCanvas.translate(0, -currentTop);
+            contentView.draw(bitmapCanvas);
+
+            PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(contentWidth, pageHeight, pdfDocument.getPages().size() + 1).create();
+            PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+
+            Canvas pageCanvas = page.getCanvas();
+            pageCanvas.drawBitmap(bitmap, padding, padding, null);
             pdfDocument.finishPage(page);
 
             bitmap.recycle();
 
-            currentTop+=pageHeight;
+            currentTop += effectiveHeight;
         }
 
-        File filePath=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "output.pdf");
-        try (FileOutputStream outputStream =new FileOutputStream(filePath)) {
+        File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "output.pdf");
+        try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
             pdfDocument.writeTo(outputStream);
             Log.v("FilePath", filePath.getAbsolutePath());
             Toast.makeText(context, "PDF saved to: " + filePath.getAbsolutePath(), Toast.LENGTH_LONG).show();
