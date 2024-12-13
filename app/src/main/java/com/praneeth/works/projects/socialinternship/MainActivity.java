@@ -17,7 +17,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void exportPdf(View view) {
-        RenderXml.exportToPdf(this);
-    }
 }
