@@ -8,8 +8,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -238,7 +236,7 @@
                             android:layout_marginTop="5dp"
                             android:padding="5dp"
                             android:orientation="vertical"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -309,7 +307,7 @@
                                     <EditText
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:inputType="number"
+                                        android:inputType="numberDecimal"
                                         android:minWidth="80dp"
                                         android:layout_toEndOf="@+id/form_text_9"/>
 
@@ -362,7 +360,7 @@
                                 <EditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:inputType="number"
+                                    android:inputType="numberDecimal"
                                     android:layout_toEndOf="@+id/form_text_11"/>
 
 
@@ -407,43 +405,348 @@
                             android:textColor="#232323"
                             />
 
-                    <LinearLayout
-                        android:id="@+id/expand_layout_main_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:padding="5dp"
-                        android:orientation="vertical"
-                        android:visibility="visible">
-
-
-                        <RelativeLayout
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            >
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
-                            <TextView
-                                android:id="@+id/form_text_12"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Name of the Head (Household):"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                android:layout_alignParentTop="true"
-                                />
 
-                            <EditText
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/form_text_12"
-                                android:layout_marginLeft="5dp"/>
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_12"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Name of the Head (Household):"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_12"
+                                    android:layout_marginLeft="5dp"/>
 
 
-                        </RelativeLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
 
 
-                    </LinearLayout>
+                                <TextView
+                                    android:id="@+id/form_text_13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Gender:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/gender_spinner2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_13"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="No. of family members:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_14"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Category:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/category_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_15"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Poverty Status:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/status_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_16"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_17"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Own House:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/house_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_17"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Types Of House:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/Type_of_house_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_18"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_19"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Toilet:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/Toilet_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_19"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_20"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Drainage linked to House:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/Drainage_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_20"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_21"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Waste Collection System:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/Waste_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_21"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_22"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Compost Pit:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/Composite_spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_22"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp">
+
+
+                                <TextView
+                                    android:id="@+id/form_text_23"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Biogas Plant:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/BioGasPlant_Spinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_23"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -451,12 +754,1858 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
 
+                    <RelativeLayout
+                        android:id="@+id/expand_layout_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="3. Family Member Information"
+                                        android:textSize="17sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#232323"
+                                        />
+
+                                    <LinearLayout
+                                        android:id="@+id/expand_layout_main_6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:padding="5dp"
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
+
+                                        <androidx.recyclerview.widget.RecyclerView
+                                            android:id="@+id/activity_house_servey_recyclerView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            tools:listitem="@layout/item_member_data"
+                                            android:padding="3dp"/>
+
+                                        <Button
+                                            android:id="@+id/add_member_btn"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:text="Add Member"/>
+
+
+
+                                    </LinearLayout>
+
+
+                            </LinearLayout>
+
+                    </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4. Migration Status in a family"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_24"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Does any member of the household migrate for Work?:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_24"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_25"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="If Yes How many members of the family migrated:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_25"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_26"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Family migrates for how many days/ months?:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_26"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_27"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Since how many years the migration is taking place?:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_27"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                </RelativeLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5. Information of Government Schemes"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Beneficiary Individuals(In Number)"
+                                android:gravity="center"
+                                android:textStyle="italic"/>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_28"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="1)PM Jan Dhan Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_28"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_29"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2)Sukanya Samridhi Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_29"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_30"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="3)Mudra Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_30"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_31"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="4)PM Jivan Jyoti Bima Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_31"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_32"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="5)PM Suraksha Bima Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_32"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_33"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="6)Atal pension Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_33"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_34"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="7)Kaushal Vikas Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_34"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_35"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="8)Janani Suraksha Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_35"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Beneficiary Household(Y/N)"
+                                    android:gravity="center"
+                                    android:textStyle="italic"
+                                    android:layout_marginTop="10dp"/>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="7dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_36"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="9)Fasal Bima Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_36"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_37"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="10)Kisan Credit Card:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_37"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_38"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="11)Krishi Sinchai Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_38"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_39"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="12)Swachh Bharat Mission Toilet:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_39"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_40"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="13)Soil Health Card:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_40"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_41"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="14)PM Ujjwala Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner6"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_41"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_42"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="15)PM Awas Yojana:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <Spinner
+                                        android:id="@+id/schemes_spinner7"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_42"
+                                        android:layout_marginLeft="4dp"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_centerVertical="true"/>
+
+                                </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7. Source of Energy and power"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_49"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Electricity Connection to Household:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/energy_spinner1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_49"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_53"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Electricity Availability per Day(hours):"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_53"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_50"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lighting:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/energy_spinner2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_50"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_51"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cooking:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/energy_spinner3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_51"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_52"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="If cooking in Chullah:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/energy_spinner4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_52"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Appliances"
+                                android:gravity="center"
+                                android:textStyle="italic"
+                                android:layout_marginTop="10dp"/>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/activity_house_servey_recyclerView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/item_appliance_data"
+                                android:padding="3dp"/>
+
+                            <Button
+                                android:id="@+id/add_member_btn_appliances"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Add Appliances"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8.  Landholding Information (in Acres)"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                            <LinearLayout
+                                android:id="@+id/expand_layout_main_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_43"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="1) Total:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_43"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_44"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="2) Cultivable Area:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_44"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_45"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="3) Irrigated Area:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_45"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_46"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="4) Un Irrigated Area:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_46"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_47"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="5) Barren/Waste Area:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_47"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_48"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="6) Uncultivable Area:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_48"
+                                        android:inputType="numberDecimal"
+                                        android:layout_marginLeft="5dp"/>
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9. Agricultural Inputs"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="3dp"
+                                app:cardElevation="5dp"
+                                android:backgroundTint="#EFEDED">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_margin="7dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="1) Do you use Chemical Fertillsers?"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <RadioGroup
+                                        android:id="@+id/radioGroup_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        >
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton1_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            android:scaleY="0.9"
+                                            android:textSize="16sp"/>
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton1_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="No"
+                                            android:textSize="16sp"/>
+
+                                    </RadioGroup>
+
+                                    <EditText
+                                        android:id="@+id/enterDataIfYes1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:visibility="gone"
+                                        android:hint="Fertilizer Use(Kg/Acre)"/>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="3dp"
+                                app:cardElevation="5dp"
+                                android:backgroundTint="#EFEDED"
+                                android:layout_marginTop="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_margin="7dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="2) Do you use Chemical Insecticides?"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <RadioGroup
+                                        android:id="@+id/radioGroup_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        >
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton2_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            android:scaleY="0.9"
+                                            android:textSize="16sp"/>
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton2_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="No"
+                                            android:textSize="16sp"
+                                            />
+
+                                    </RadioGroup>
+
+                                    <EditText
+                                        android:id="@+id/enterDataIfYes2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:visibility="gone"
+                                        android:hint="Fertilizer Use(Kg/Acre)"/>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="3dp"
+                                app:cardElevation="5dp"
+                                android:backgroundTint="#EFEDED"
+                                android:layout_marginTop="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_margin="7dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="3) Do you use Chemical Weedicide?"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <RadioGroup
+                                        android:id="@+id/radioGroup_3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        >
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton3_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            android:scaleY="0.9"
+                                            android:textSize="16sp"/>
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton3_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="No"
+                                            android:textSize="16sp"
+                                            />
+
+                                    </RadioGroup>
+
+                                    <EditText
+                                        android:id="@+id/enterDataIfYes3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:visibility="gone"
+                                        android:hint="Fertilizer Use(Kg/Acre)"/>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="3dp"
+                                app:cardElevation="5dp"
+                                android:backgroundTint="#EFEDED"
+                                android:layout_marginTop="7dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_margin="7dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="4) Do you use organic Manures?"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+                                    <RadioGroup
+                                        android:id="@+id/radioGroup_4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        >
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton4_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            android:scaleY="0.9"
+                                            android:textSize="16sp"/>
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton4_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="No"
+                                            android:textSize="16sp"
+                                            />
+
+                                    </RadioGroup>
+
+                                    <EditText
+                                        android:id="@+id/enterDataIfYes4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:visibility="gone"
+                                        android:hint="Fertilizer Use(Kg/Acre)"/>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_54"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="5)Irrigation:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/irrigation_spinner1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_54"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_55"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="5)rrigation System:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/irrigation_spinner2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_55"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"
+                                    android:layout_centerVertical="true"/>
+
+                            </RelativeLayout>
+
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10. Agricultural Produce in a normal year"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/activity_house_servey_recyclerView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/item_agri_produce"
+                                android:padding="3dp"/>
+
+                            <Button
+                                android:id="@+id/add_agriProdu_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Add Crop"/>
+
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11. Livestock Numbers"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_56"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cows:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_56"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_57"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Buffalo:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_57"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_58"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Goats/Sheep:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_58"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_59"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Calves:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_59"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_60"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bullocks:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_60"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_61"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Poultry/Ducks:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_61"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_62"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Others (mention):"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_62"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_63"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Shelter for Livestock:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/liveStock_spinner1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@+id/form_text_63"
+                                    android:layout_marginLeft="4dp"
+                                    android:spinnerMode="dropdown"/>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_64"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Average Daily Production of Milk(Litres):"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_64"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_65"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Animal Waste/Cow Dung (in Kg.):"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_65"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                            </RelativeLayout>
+
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12. Major problems in village, if any"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                        />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/activity_house_servey_recyclerView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/item_problem"
+                                android:padding="3dp"/>
+
+                            <Button
+                                android:id="@+id/add_problem_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Add Problem"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </LinearLayout>
