@@ -41,12 +41,38 @@ public class HouseServeyForm extends AppCompatActivity {
 
     HouseServeyEntity serveyEntity;
 
+    View BasicInfo[],ResProfile[],generalInfo[];
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_servey_form);
         serveyEntity=new HouseServeyEntity();
+
+        BasicInfo=new View[]{
+                findViewById(R.id.servey_form_input_1),//Village
+                findViewById(R.id.servey_form_input_2),//Gram Panchayat
+                findViewById(R.id.servey_form_input_3),//Ward No
+                findViewById(R.id.servey_form_input_4),//Block
+                findViewById(R.id.servey_form_input_5),//District
+                findViewById(R.id.servey_form_input_6),//State
+        };
+
+        ResProfile=new View[]{
+                findViewById(R.id.servey_form_input_7),
+                findViewById(R.id.servey_form_input_8),
+                findViewById(R.id.servey_form_input_9),
+                findViewById(R.id.servey_form_input_10),
+        };
+
+        generalInfo=new View[]{
+                findViewById(R.id.servey_form_input_11),
+                findViewById(R.id.servey_form_input_12)
+        };
+
+
+
         //expandLayout=new RelativeLayout[10];
         RelativeLayout expandLayout[]={
                 findViewById(R.id.expand_layout_1),
@@ -128,7 +154,7 @@ public class HouseServeyForm extends AppCompatActivity {
         Spinner genderSpinner[]={findViewById(R.id.gender_spinner),findViewById(R.id.gender_spinner2)};
 
 
-        String[] genderOptions = {"Select Gender", "Male", "Female", "Other"};
+        String[] genderOptions = {"Select", "Male", "Female", "Other"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -170,7 +196,7 @@ public class HouseServeyForm extends AppCompatActivity {
                 findViewById(R.id.Drainage_spinner),
                 findViewById(R.id.Waste_spinner),
                 findViewById(R.id.Composite_spinner),
-                findViewById(R.id.BioGasPlant_Spinner),
+                findViewById(R.id.BioGasPlant_Spinner),//count 0-8
 
                 findViewById(R.id.energy_spinner2),//7.Source Of Energy
                 findViewById(R.id.energy_spinner3),//7.Source of Energy
@@ -183,8 +209,8 @@ public class HouseServeyForm extends AppCompatActivity {
         };
 
         ArrayAdapter<?> adapterObj[] = {
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Selected Category", "Gen", "SC", "ST", "OBC"}),
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Select Poverty Status", "Active", "Inactive", "Pending"}),
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Select", "Gen", "SC", "ST", "OBC"}),
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Select", "Active", "Inactive", "Pending"}),
                 new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Select", "Owned", "Rented", "Others"}),
                 new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Select", "Kutcha", "Semi Pucca", "Pucca","Homeless"}),
                 new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"Select", "Private", "Community", "Open Defecation"}),
@@ -340,6 +366,127 @@ public class HouseServeyForm extends AppCompatActivity {
             public void onClick(View view) {
                 serveyEntity.addProblem(new HouseServeyEntity().new problem());
                 adapter_Problem.update(serveyEntity.getMajor_problem_in_village().size());
+            }
+        });
+
+        //saving Data
+
+        Button saveData=findViewById(R.id.save_form_house_hold);
+
+        saveData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean cou=true;
+                String instanceData=null;
+
+                //Basic info
+                for(int i=0;i<BasicInfo.length;i++){
+
+                    instanceData=((EditText)BasicInfo[i]).getText().toString();
+                    if(instanceData.isEmpty()){
+                        cou=false;
+                        Toast.makeText(getApplicationContext(),"Please provide basic information.",Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+
+                    switch (i+1){
+                        case 1:serveyEntity.setVillage(instanceData);break;
+                        case 2:serveyEntity.setGram_Panchayat(instanceData);break;
+                        case 3:serveyEntity.setWard_No(instanceData);break;
+                        case 4:serveyEntity.setBlock(instanceData);break;
+                        case 5:serveyEntity.setDistrict(instanceData);break;
+                        case 6:serveyEntity.setState(instanceData);break;
+                        default:
+                            Log.v("Saving","Something went wrong");
+                            cou=false;
+                            Toast.makeText(getApplicationContext(),"Something went wrong.",Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                if(cou){
+
+                    //1. Respondent’s Profile
+                    HouseServeyEntity.Profile obj=new HouseServeyEntity().new Profile();
+
+                    for(int i=0;i<ResProfile.length;i++){
+                        instanceData=((EditText)ResProfile[i]).getText().toString();
+
+                        if(instanceData.isEmpty()){
+                            cou=false;
+                            break;
+                        }
+
+                        switch (i+1){
+                            case 1:obj.setName(instanceData);break;
+                            case 2:obj.setAge(Integer.parseInt(instanceData));break;
+                            case 3:obj.setRelationship_with_Head_of_Household(instanceData);break;
+                            case 4:obj.setContact_Number(instanceData);break;
+                        }
+                    }
+
+                    instanceData=genderSpinner[0].getSelectedItem().toString();
+                    if(!cou || instanceData.equals("Select")){
+                        Toast.makeText(getApplicationContext(),"Incomplete Respondent’s Profile information.",Toast.LENGTH_SHORT).show();
+                    }else{
+                        obj.setGender(instanceData);
+                        serveyEntity.setRespondent_Profile(obj);
+
+                        //2. General Household Information
+
+                        HouseServeyEntity.general generalObj=new HouseServeyEntity().new general();
+
+                        for(int i=0;i<9;i++){
+                            instanceData=spinnerObj[i].getSelectedItem().toString();
+
+                            if(instanceData.equals("Select")){
+                                cou=false;
+                                break;
+                            }
+
+                            switch (i+1){
+                                case 1:generalObj.setCategory(instanceData);break;
+                                case 2:generalObj.setPoverty_Status(instanceData);break;
+                                case 3:generalObj.setOwn_House(instanceData);break;
+                                case 4:generalObj.setTypes_of_House(instanceData);break;
+                                case 5:generalObj.setToliet(instanceData);break;
+                                case 6:generalObj.setDrainage_linked_to_House(instanceData);break;
+                                case 7:generalObj.setWaste_Collection_System(instanceData);break;
+                                case 8:generalObj.setCompost_Pit(instanceData);break;
+                                case 9:generalObj.setBiogas_plant(instanceData);break;
+                            }
+                        }
+
+                        instanceData=((EditText)generalInfo[0]).getText().toString();
+                        if(instanceData==null || instanceData.isEmpty()){
+                            cou=false;
+                        }
+                        generalObj.setName_of_the_head(instanceData);
+                        instanceData=((EditText)generalInfo[1]).getText().toString();
+                        if(instanceData==null || instanceData.isEmpty()){
+                            cou=false;
+                        }
+                        generalObj.setNo_of_family_members(Integer.parseInt(instanceData));
+                        instanceData=genderSpinner[1].getSelectedItem().toString();
+                        if(instanceData.equals("Select")){
+                            cou=false;
+                        }
+                        generalObj.setGender(instanceData);
+                        if(!cou){
+                            Toast.makeText(getApplicationContext(),"Incomplete General Household Information",Toast.LENGTH_SHORT).show();
+                        }else{
+                            serveyEntity.setGeneral_Household_information(generalObj);
+
+                            //3. Family Member Information
+
+
+                        }
+
+                    }
+
+                    //Toast.makeText(getApplicationContext(),obj.getGender(),Toast.LENGTH_SHORT).show();
+                }
+
+                Toast.makeText(getApplicationContext(),"Incomplete Infomation",Toast.LENGTH_SHORT).show();
             }
         });
 
