@@ -22,6 +22,20 @@ public class HouseServeyEntity {
     private livestock Livestock_number;
     private ArrayList<problem> Major_problem_in_village;
 
+    public HouseServeyEntity(){
+        Respondent_Profile=new Profile();
+        General_Household_information=new general();
+        family_member_information=new ArrayList<>();
+        Migration_status_in_a_family=new migration();
+        information_of_Government_Schemes=new schemes();
+        Source_of_energy=new energy();
+        Landholding_information=new land();
+        Agricultural_inputs=new Agricultural();
+        Agricultural_produce_in_a_normal_year=new ArrayList<>();
+        Livestock_number=new livestock();
+        Major_problem_in_village=new ArrayList<>();
+    }
+
     public void addAgricultural_produce_in_a_normal_year(agri_produce obj){
         Agricultural_produce_in_a_normal_year.add(obj);
     }
@@ -79,7 +93,7 @@ public class HouseServeyEntity {
         private String Contact_Number;
     }
 
-    class general{
+    public class general{
         private String Name_of_the_head;
         private String Gender;
         private int No_of_family_members;
@@ -670,7 +684,14 @@ public class HouseServeyEntity {
         private String Irrigation;
         private String Irrigation_System;
 
-        class ans{
+        public Agricultural(){
+            Do_you_use_chemical_fertilisers=new ans();
+            do_you_use_chemical_insecticides=new ans();
+            Do_you_use_Chemical_Weedicide=new ans();
+            Do_you_organic_manures=new ans();
+        }
+
+        public class ans{
             private String answer;
             private String if_yes;
 

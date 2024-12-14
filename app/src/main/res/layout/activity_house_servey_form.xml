@@ -65,6 +65,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/servey_form_input_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/form_text_1"/>
@@ -91,6 +92,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/servey_form_input_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/form_text_2"/>
@@ -117,6 +119,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/servey_form_input_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/form_text_3"/>
@@ -143,6 +146,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/servey_form_input_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/form_text_4"/>
@@ -169,6 +173,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/servey_form_input_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/form_text_5"/>
@@ -195,6 +200,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/servey_form_input_6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/form_text_6"/>
@@ -255,6 +261,7 @@
                                     />
 
                                 <EditText
+                                    android:id="@+id/servey_form_input_7"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_toEndOf="@+id/form_text_7"/>
@@ -305,6 +312,7 @@
                                         />
 
                                     <EditText
+                                        android:id="@+id/servey_form_input_8"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:inputType="numberDecimal"
@@ -333,6 +341,7 @@
                                     />
 
                                 <EditText
+                                    android:id="@+id/servey_form_input_9"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/form_text_10"
@@ -358,6 +367,7 @@
                                     />
 
                                 <EditText
+                                    android:id="@+id/servey_form_input_10"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="numberDecimal"
@@ -432,6 +442,7 @@
                                     />
 
                                 <EditText
+                                    android:id="@+id/servey_form_input_11"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/form_text_12"
@@ -485,10 +496,11 @@
                                     />
 
                                 <EditText
+                                    android:id="@+id/servey_form_input_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_toEndOf="@+id/form_text_14"
-                                    android:inputType="numberDecimal"
+                                    android:inputType="number"
                                     android:layout_marginLeft="5dp"/>
 
 
@@ -791,7 +803,7 @@
                                         android:layout_marginTop="5dp"
                                         android:padding="5dp"
                                         android:orientation="vertical"
-                                        android:visibility="gone">
+                                        android:visibility="visible">
 
                                         <androidx.recyclerview.widget.RecyclerView
                                             android:id="@+id/activity_house_servey_recyclerView"
@@ -2603,6 +2615,15 @@
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/save_form_house_hold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Save"/>
 
         </LinearLayout>
 
