@@ -55,6 +55,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_member_data_input_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/item_member_text_1"
@@ -80,6 +81,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_member_data_input_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -295,6 +297,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_member_data_input_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/item_member_text_10"

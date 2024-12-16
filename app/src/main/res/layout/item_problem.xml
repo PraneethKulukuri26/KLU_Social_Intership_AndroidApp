@@ -49,6 +49,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_problem_input_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
@@ -74,6 +75,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_problem_input_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
