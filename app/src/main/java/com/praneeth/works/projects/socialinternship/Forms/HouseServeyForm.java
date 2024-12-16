@@ -11,9 +11,13 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +30,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.praneeth.works.projects.socialinternship.Forms.Entity.HouseServeyEntity;
 import com.praneeth.works.projects.socialinternship.R;
 
@@ -41,7 +47,7 @@ public class HouseServeyForm extends AppCompatActivity {
 
     HouseServeyEntity serveyEntity;
 
-    View BasicInfo[],ResProfile[],generalInfo[];
+    View BasicInfo[],ResProfile[],generalInfo[],migrationInfo[],schmeesInfo[],energyInfo,landInfo[],livestock[];
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -69,6 +75,46 @@ public class HouseServeyForm extends AppCompatActivity {
         generalInfo=new View[]{
                 findViewById(R.id.servey_form_input_11),
                 findViewById(R.id.servey_form_input_12)
+        };
+
+        migrationInfo=new View[]{
+                findViewById(R.id.servey_form_input_13),
+                findViewById(R.id.servey_form_input_14),
+                findViewById(R.id.servey_form_input_15),
+        };
+
+        schmeesInfo=new View[]{
+                findViewById(R.id.servey_form_input_16),
+                findViewById(R.id.servey_form_input_17),
+                findViewById(R.id.servey_form_input_18),
+                findViewById(R.id.servey_form_input_19),
+                findViewById(R.id.servey_form_input_20),
+                findViewById(R.id.servey_form_input_21),
+                findViewById(R.id.servey_form_input_22),
+                findViewById(R.id.servey_form_input_23),
+        };
+
+        energyInfo=findViewById(R.id.servey_form_input_24);
+
+        landInfo=new View[]{
+                findViewById(R.id.servey_form_input_25),
+                findViewById(R.id.servey_form_input_26),
+                findViewById(R.id.servey_form_input_27),
+                findViewById(R.id.servey_form_input_28),
+                findViewById(R.id.servey_form_input_29),
+                findViewById(R.id.servey_form_input_30),
+        };
+
+        livestock=new View[]{
+                findViewById(R.id.servey_form_input_31),
+                findViewById(R.id.servey_form_input_32),
+                findViewById(R.id.servey_form_input_33),
+                findViewById(R.id.servey_form_input_34),
+                findViewById(R.id.servey_form_input_35),
+                findViewById(R.id.servey_form_input_36),
+                findViewById(R.id.servey_form_input_38),
+                findViewById(R.id.servey_form_input_39),
+                findViewById(R.id.servey_form_input_37),
         };
 
 
@@ -200,12 +246,12 @@ public class HouseServeyForm extends AppCompatActivity {
 
                 findViewById(R.id.energy_spinner2),//7.Source Of Energy
                 findViewById(R.id.energy_spinner3),//7.Source of Energy
-                findViewById(R.id.energy_spinner4),//7.Source of Energy
+                findViewById(R.id.energy_spinner4),//7.Source of Energy 9-11
 
-                findViewById(R.id.irrigation_spinner1),//9.Agricultural Inputs
-                findViewById(R.id.irrigation_spinner2),//9.Agricultural Inputs
+                findViewById(R.id.irrigation_spinner1),//9.Agricultural Inputs 12
+                findViewById(R.id.irrigation_spinner2),//9.Agricultural Inputs 13
 
-                findViewById(R.id.liveStock_spinner1),//10.Livestock Numbers
+                findViewById(R.id.liveStock_spinner1),//10.Livestock Numbers 14
         };
 
         ArrayAdapter<?> adapterObj[] = {
@@ -249,7 +295,7 @@ public class HouseServeyForm extends AppCompatActivity {
                 findViewById(R.id.schemes_spinner6),
                 findViewById(R.id.schemes_spinner7),
 
-                findViewById(R.id.energy_spinner1)//7.Source Of energy
+                findViewById(R.id.energy_spinner1)//7.Source Of energy 7
         };
 
         ArrayAdapter<String> schemesAdapter = new ArrayAdapter<>(
@@ -308,11 +354,15 @@ public class HouseServeyForm extends AppCompatActivity {
         RadioGroup radioBtns[]={
                 findViewById(R.id.radioGroup_1),
                 findViewById(R.id.radioGroup_2),
+                findViewById(R.id.radioGroup_3),
+                findViewById(R.id.radioGroup_4),
         };
 
         EditText inputDataAgri[]={
                 findViewById(R.id.enterDataIfYes1),
-                findViewById(R.id.enterDataIfYes2)
+                findViewById(R.id.enterDataIfYes2),
+                findViewById(R.id.enterDataIfYes3),
+                findViewById(R.id.enterDataIfYes4),
         };
 
         for(int i=0;i<radioBtns.length;i++){
@@ -322,10 +372,18 @@ public class HouseServeyForm extends AppCompatActivity {
                 public void onCheckedChanged(RadioGroup radioGroup, int i) {
                     RadioButton radioButton=radioGroup.findViewById(i);
 
-                    if(radioButton.getText().equals("Yes")){
+                    String val=radioButton.getText().toString();
+                    if(val.equals("Yes")){
                         inputDataAgri[iFinal].setVisibility(View.VISIBLE);
                     }else{
                         inputDataAgri[iFinal].setVisibility(View.GONE);
+                    }
+
+                    switch (iFinal+1){
+                        case 1:serveyEntity.getAgricultural_inputs().getDo_you_use_chemical_fertilisers().setAnswer(val);break;
+                        case 2:serveyEntity.getAgricultural_inputs().getDo_you_use_chemical_insecticides().setAnswer(val);break;
+                        case 3:serveyEntity.getAgricultural_inputs().getDo_you_use_Chemical_Weedicide().setAnswer(val);break;
+                        case 4:serveyEntity.getAgricultural_inputs().getDo_you_organic_manures().setAnswer(val);break;
                     }
                 }
             });
@@ -366,6 +424,26 @@ public class HouseServeyForm extends AppCompatActivity {
             public void onClick(View view) {
                 serveyEntity.addProblem(new HouseServeyEntity().new problem());
                 adapter_Problem.update(serveyEntity.getMajor_problem_in_village().size());
+            }
+        });
+
+        //Migration Data
+
+        RadioGroup migrationGroup=findViewById(R.id.migration_radio_group);
+        LinearLayout migrationDataLinear=findViewById(R.id.activity_house_append_linear);
+
+        migrationGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton=radioGroup.findViewById(i);
+
+                if(radioButton.getText().equals("Yes")){
+                    migrationDataLinear.setVisibility(View.VISIBLE);
+                    serveyEntity.getMigration_status_in_a_family().setDid_any_of_them_migrate("Yes");
+                }else{
+                    migrationDataLinear.setVisibility(View.GONE);
+                    serveyEntity.getMigration_status_in_a_family().setDid_any_of_them_migrate("No");
+                }
             }
         });
 
@@ -464,8 +542,11 @@ public class HouseServeyForm extends AppCompatActivity {
                         instanceData=((EditText)generalInfo[1]).getText().toString();
                         if(instanceData==null || instanceData.isEmpty()){
                             cou=false;
+                        }else{
+                            generalObj.setNo_of_family_members(Integer.parseInt(instanceData));
                         }
-                        generalObj.setNo_of_family_members(Integer.parseInt(instanceData));
+                        //Toast.makeText(getApplicationContext(),instanceData,Toast.LENGTH_SHORT).show();
+
                         instanceData=genderSpinner[1].getSelectedItem().toString();
                         if(instanceData.equals("Select")){
                             cou=false;
@@ -477,7 +558,237 @@ public class HouseServeyForm extends AppCompatActivity {
                             serveyEntity.setGeneral_Household_information(generalObj);
 
                             //3. Family Member Information
+                            if(serveyEntity.getFamily_member_information().size()==0){
+                                Toast.makeText(getApplicationContext(),"Incomplete family members Information",Toast.LENGTH_SHORT).show();
+                            }else{
+                                //Log.v("DataShow",new Gson().toJson(serveyEntity));
+                                //Log.v("DataShow",serveyEntity.getFamily_member_information().get(0).getComputer_Literate());
 
+                                //4. Migration status
+                                instanceData=serveyEntity.getMigration_status_in_a_family().getDid_any_of_them_migrate();
+                                if(instanceData==null || instanceData.isEmpty()){
+                                    cou=false;
+                                }
+
+                                if(cou){
+                                    if(instanceData.equals("Yes")){
+                                        for(int i=0;i<migrationInfo.length;i++){
+                                            instanceData=((EditText)migrationInfo[i]).getText().toString();
+
+                                            if(instanceData==null || instanceData.isEmpty()){
+                                                cou=false;
+                                                break;
+                                            }
+
+                                            switch (i+1){
+                                                case 1:serveyEntity.getMigration_status_in_a_family().setHow_many_members(Integer.parseInt(instanceData));break;
+                                                case 2:serveyEntity.getMigration_status_in_a_family().setHow_many_days_months(Double.parseDouble(instanceData));break;
+                                                case 3:serveyEntity.getMigration_status_in_a_family().setMigration_is_taking(Double.parseDouble(instanceData));break;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if(!cou){
+                                    Toast.makeText(getApplicationContext(),"Incomplete family Migration Data",Toast.LENGTH_SHORT).show();
+                                }else{
+                                    //Log.v("DataShow",new Gson().toJson(serveyEntity));
+
+                                    //Government Schemes
+
+                                    for(int i=0;i<schmeesInfo.length;i++){
+                                        instanceData=((EditText)schmeesInfo[i]).getText().toString();
+
+                                        if(instanceData==null || instanceData.isEmpty()){
+                                            cou=false;
+                                            break;
+                                        }
+
+                                        switch (i+1){
+                                            case 1:serveyEntity.getInformation_of_Government_Schemes().setPM_jan_dhan_yojana(Integer.parseInt(instanceData));break;
+                                            case 2:serveyEntity.getInformation_of_Government_Schemes().setSukanya_samridhi_yojana(Integer.parseInt(instanceData));break;
+                                            case 3:serveyEntity.getInformation_of_Government_Schemes().setMudra_yojana(Integer.parseInt(instanceData));break;
+                                            case 4:serveyEntity.getInformation_of_Government_Schemes().setPm_jivan_jyoti_bima_yojana(Integer.parseInt(instanceData));break;
+                                            case 5:serveyEntity.getInformation_of_Government_Schemes().setPm_sutaksha_Bima_Yojana(Integer.parseInt(instanceData));break;
+                                            case 6:serveyEntity.getInformation_of_Government_Schemes().setAtal_pension_Yojana(Integer.parseInt(instanceData));break;
+                                            case 7:serveyEntity.getInformation_of_Government_Schemes().setKaushal_Vikas_Yojana(Integer.parseInt(instanceData));break;
+                                            case 8:serveyEntity.getInformation_of_Government_Schemes().setJanani_Suraksha_Yojana(Integer.parseInt(instanceData));break;
+                                        }
+                                    }
+
+                                    if(cou){
+                                        for(int i=0;i<7;i++){
+                                            instanceData=schemes[i].getSelectedItem().toString();
+                                            if(instanceData.equals("Select")){
+                                                cou=false;
+                                                break;
+                                            }
+                                            switch (i+1){
+                                                case 1:serveyEntity.getInformation_of_Government_Schemes().setFasal_Bima_Yojana(instanceData);break;
+                                                case 2:serveyEntity.getInformation_of_Government_Schemes().setKisan_Credit_Card(instanceData);break;
+                                                case 3:serveyEntity.getInformation_of_Government_Schemes().setKrishi_Sinchai_Yojana(instanceData);break;
+                                                case 4:serveyEntity.getInformation_of_Government_Schemes().setSwachh_Bharat_Mission_Toilet(instanceData);break;
+                                                case 5:serveyEntity.getInformation_of_Government_Schemes().setSoil_Health_Card(instanceData);break;
+                                                case 6:serveyEntity.getInformation_of_Government_Schemes().setPM_Ujjwala_yojana(instanceData);break;
+                                                case 7:serveyEntity.getInformation_of_Government_Schemes().setPM_Awas_Yojana(instanceData);break;
+                                            }
+                                        }
+                                    }
+
+                                    if(!cou){
+                                        Toast.makeText(getApplicationContext(),"Incomplete Government Schemes Data",Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        instanceData=schemes[7].getSelectedItem().toString();
+
+                                        if(instanceData.equals("Select")){
+                                            cou=false;
+                                        }
+
+                                        if(cou){
+                                            serveyEntity.getSource_of_energy().setElectricity_Connection_to_Household(instanceData);
+
+                                            for(int i=9;i<=11;i++){
+                                                instanceData=spinnerObj[i].getSelectedItem().toString();
+
+                                                if(instanceData.equals("Select")){
+                                                    cou=false;
+                                                    break;
+                                                }
+
+                                                switch (i){
+                                                    case 9:serveyEntity.getSource_of_energy().setLighting(instanceData);break;
+                                                    case 10:serveyEntity.getSource_of_energy().setCooking(instanceData);break;
+                                                    case 11:serveyEntity.getSource_of_energy().setIf_cooking_in_chullah(instanceData);break;
+                                                }
+                                            }
+
+                                            instanceData=((EditText)energyInfo).getText().toString();
+                                            if(!cou || instanceData.isEmpty() || instanceData==null || serveyEntity.getSource_of_energy().getAppliances().size()==0){
+                                                Toast.makeText(getApplicationContext(),"Incomplete information Source of Energy ",Toast.LENGTH_SHORT).show();
+                                            }else{
+                                                serveyEntity.getSource_of_energy().setElectricity_Availability(Integer.parseInt(instanceData));
+
+                                                for(int i=0;i<landInfo.length;i++){
+                                                    instanceData=((EditText)landInfo[i]).getText().toString();
+
+                                                    if(instanceData==null || instanceData.isEmpty()){
+                                                        cou=false;
+                                                        break;
+                                                    }
+
+                                                    switch (i+1){
+                                                        case 1:serveyEntity.getLandholding_information().setTotal(Double.parseDouble(instanceData));break;
+                                                        case 2:serveyEntity.getLandholding_information().setCultivable(Double.parseDouble(instanceData));break;
+                                                        case 3:serveyEntity.getLandholding_information().setIrrigated_Area(Double.parseDouble(instanceData));break;
+                                                        case 4:serveyEntity.getLandholding_information().setUn_irrigated_Area(Double.parseDouble(instanceData));break;
+                                                        case 5:serveyEntity.getLandholding_information().setBarren_Area(Double.parseDouble(instanceData));break;
+                                                        case 6:serveyEntity.getLandholding_information().setUncultivable_Area(Double.parseDouble(instanceData));break;
+                                                    }
+                                                }
+
+                                                if(!cou){
+                                                    Toast.makeText(getApplicationContext(),"Incomplete Landholding Information",Toast.LENGTH_SHORT).show();
+                                                }else{
+
+                                                    //Agrisultural inputs
+
+                                                    HouseServeyEntity.Agricultural aObj=serveyEntity.getAgricultural_inputs();
+                                                    if(aObj.getDo_you_organic_manures().getAnswer()==null || aObj.getDo_you_use_Chemical_Weedicide().getAnswer()==null || aObj.getDo_you_use_chemical_insecticides().getAnswer()==null || aObj.getDo_you_use_chemical_fertilisers().getAnswer()==null){
+                                                        cou=false;
+                                                    }
+
+                                                    if(cou){
+
+                                                        instanceData=inputDataAgri[0].getText().toString();
+                                                        if(aObj.getDo_you_use_chemical_fertilisers().getAnswer().equals("Yes") && !instanceData.isEmpty()){
+                                                            aObj.getDo_you_use_chemical_fertilisers().setIf_yes(instanceData);
+                                                        }else if(!aObj.getDo_you_use_chemical_fertilisers().getAnswer().equals("No")){
+                                                            cou=false;
+                                                        }
+
+                                                        instanceData=inputDataAgri[1].getText().toString();
+                                                        if(cou && aObj.getDo_you_use_chemical_insecticides().getAnswer().equals("Yes") && !instanceData.isEmpty()){
+                                                            aObj.getDo_you_use_chemical_insecticides().setIf_yes(instanceData);
+                                                        }else if(cou && !aObj.getDo_you_use_chemical_insecticides().getAnswer().equals("No")){
+                                                            cou=false;
+                                                        }
+
+                                                        instanceData=inputDataAgri[2].getText().toString();
+                                                        if(cou && aObj.getDo_you_use_Chemical_Weedicide().getAnswer().equals("Yes") && !instanceData.isEmpty()){
+                                                            aObj.getDo_you_use_Chemical_Weedicide().setIf_yes(instanceData);
+                                                        }else if(cou && !aObj.getDo_you_use_Chemical_Weedicide().getAnswer().equals("No")){
+                                                            cou=false;
+                                                        }
+
+                                                        instanceData=inputDataAgri[3].getText().toString();
+                                                        if(cou && aObj.getDo_you_organic_manures().getAnswer().equals("Yes") && !instanceData.isEmpty()){
+                                                            aObj.getDo_you_organic_manures().setIf_yes(instanceData);
+                                                        }else if(cou && !aObj.getDo_you_organic_manures().getAnswer().equals("No")){
+                                                            cou=false;
+                                                        }
+
+                                                        if(cou){
+
+                                                            if(spinnerObj[12].getSelectedItem().toString().equals("Select") || spinnerObj[13].getSelectedItem().toString().equals("Select")){
+                                                                cou=false;
+                                                            }
+
+                                                            if(!cou){
+                                                                Toast.makeText(getApplicationContext(),"Incomplete Agricultural Data",Toast.LENGTH_SHORT).show();
+                                                            }else{
+                                                                aObj.setIrrigation(spinnerObj[12].getSelectedItem().toString());
+                                                                aObj.setIrrigation_System(spinnerObj[13].getSelectedItem().toString());
+
+                                                                serveyEntity.setAgricultural_inputs(aObj);
+
+                                                                //Agricultural Produce in a normal year
+                                                                if(serveyEntity.getAgricultural_produce_in_a_normal_year().isEmpty()){
+                                                                    cou=false;
+                                                                    Toast.makeText(getApplicationContext(),"Incomplete data about \"Agricultural Produce in a normal year\".",Toast.LENGTH_SHORT).show();
+                                                                }
+
+                                                                if(cou){
+                                                                    //Livestock Numbers
+
+                                                                    for(int i=0;i<livestock.length-1;i++){
+                                                                        instanceData=((EditText)livestock[i]).getText().toString();
+
+                                                                        if(instanceData.isEmpty() || instanceData==null){
+                                                                            cou=false;
+                                                                            break;
+                                                                        }
+
+                                                                        switch (i+1){
+                                                                            case 1:serveyEntity.getLivestock_number().setCows(Integer.parseInt(instanceData));break;
+                                                                            case 2:serveyEntity.getLivestock_number().setBuffalo(Integer.parseInt(instanceData));break;
+                                                                            case 3:serveyEntity.getLivestock_number().setSheep(Integer.parseInt(instanceData));break;
+                                                                            case 4:serveyEntity.getLivestock_number().setCalves(Integer.parseInt(instanceData));break;
+                                                                            case 5:serveyEntity.getLivestock_number().setBullocks(Integer.parseInt(instanceData));break;
+                                                                            case 6:serveyEntity.getLivestock_number().setPoultry(Integer.parseInt(instanceData));break;
+                                                                            case 7:serveyEntity.getLivestock_number().setAverage_Daily_Production_Milk(Double.parseDouble(instanceData));break;
+                                                                            case 8:serveyEntity.getLivestock_number().setAnimal_waste(Double.parseDouble(instanceData));break;
+                                                                        }
+                                                                    }
+
+                                                                    instanceData=((EditText)livestock[livestock.length-1]).getText().toString();
+                                                                    if(!cou || instanceData.isEmpty() || spinnerObj[14].getSelectedItem().toString().equals("Select")){
+                                                                        Toast.makeText(getApplicationContext(),"Incomplete information about Livestock",Toast.LENGTH_SHORT).show();
+                                                                    }else{
+                                                                        Log.v("DataShow",new Gson().toJson(serveyEntity));
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    }
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
 
                         }
 
@@ -485,8 +796,6 @@ public class HouseServeyForm extends AppCompatActivity {
 
                     //Toast.makeText(getApplicationContext(),obj.getGender(),Toast.LENGTH_SHORT).show();
                 }
-
-                Toast.makeText(getApplicationContext(),"Incomplete Infomation",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -550,9 +859,8 @@ public class HouseServeyForm extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull adapterMember.viewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull adapterMember.viewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-            Log.v("refe","came");
 
             holder.clickView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -573,6 +881,60 @@ public class HouseServeyForm extends AppCompatActivity {
                 }else{
                     holder.spinnerList.get(i).setAdapter(spinnerAdapter[5]);
                 }
+
+                final int finalI=i;
+
+                holder.spinnerList.get(i).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                        String data=adapterView.getItemAtPosition(j).toString();
+
+                        switch (finalI+1){
+                            case 1:serveyEntity.getFamily_member_information().get(position).setSex(data);break;
+                            case 2:serveyEntity.getFamily_member_information().get(position).setLevel_of_Education(data);break;
+                            case 3:serveyEntity.getFamily_member_information().get(position).setGoing_to_AWS_or_School_or_College(data);break;
+                            case 4:serveyEntity.getFamily_member_information().get(position).setSocial_Security(data);break;
+                            case 5:serveyEntity.getFamily_member_information().get(position).setOccupations(data);break;
+                            case 6:serveyEntity.getFamily_member_information().get(position).setAadhaar_Card(data);break;
+                            case 7:serveyEntity.getFamily_member_information().get(position).setBank_Account(data);break;
+                            case 8:serveyEntity.getFamily_member_information().get(position).setComputer_Literate(data);break;
+                            case 9:serveyEntity.getFamily_member_information().get(position).setMNREGA_Job_Card(data);break;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+            }
+
+            final int finalPosition=position;
+            for(int i=0;i<holder.editTextsList.size();i++){
+
+                final int finalI=i;
+                holder.editTextsList.get(i).addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String dataInsta=editable.toString();
+
+                        switch (finalI+1){
+                            case 1:serveyEntity.getFamily_member_information().get(finalPosition).setName(dataInsta);break;
+                            case 2:serveyEntity.getFamily_member_information().get(finalPosition).setAge(Integer.parseInt(dataInsta));break;
+                            case 3:serveyEntity.getFamily_member_information().get(finalPosition).setMajor_Health_problem(dataInsta);break;
+                        }
+                    }
+                });
             }
 
         }
@@ -590,10 +952,13 @@ public class HouseServeyForm extends AppCompatActivity {
 
             ArrayList<Spinner> spinnerList;
 
+            ArrayList<EditText> editTextsList;
+
 
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
                 spinnerList=new ArrayList<>();
+                editTextsList=new ArrayList<>();
                 baseView=itemView.findViewById(R.id.base_item_member);
                 clickView=itemView.findViewById(R.id.click_item_member);
                 expandLayout=itemView.findViewById(R.id.expand_item_member);
@@ -608,6 +973,11 @@ public class HouseServeyForm extends AppCompatActivity {
                 spinnerList.add(itemView.findViewById(R.id.Bank_spinner_item_member));
                 spinnerList.add(itemView.findViewById(R.id.Computer_spinner_item_member));
                 spinnerList.add(itemView.findViewById(R.id.MNGRE_spinner_item_member));
+
+                //EditText
+                editTextsList.add(itemView.findViewById(R.id.item_member_data_input_1));
+                editTextsList.add(itemView.findViewById(R.id.item_member_data_input_2));
+                editTextsList.add(itemView.findViewById(R.id.item_member_data_input_3));
             }
         }
     }
@@ -627,6 +997,33 @@ public class HouseServeyForm extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull adapterAppliances.viewHolder holder, int position) {
 
+            final int finalPosition=position;
+
+            for(int i=0;i<holder.dataApp.length;i++){
+                int finalI = i;
+                holder.dataApp[i].addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String data=editable.toString();
+
+                        switch (finalI +1){
+                            case 1:serveyEntity.getSource_of_energy().getAppliances().get(finalPosition).setName(data);break;
+                            case 2:serveyEntity.getSource_of_energy().getAppliances().get(finalPosition).setNos(Integer.parseInt(data));break;
+                            case 3:serveyEntity.getSource_of_energy().getAppliances().get(finalPosition).setDuration(Integer.parseInt(data));break;
+                        }
+                    }
+                });
+            }
         }
 
         @Override
@@ -635,8 +1032,16 @@ public class HouseServeyForm extends AppCompatActivity {
         }
 
         public class viewHolder extends RecyclerView.ViewHolder {
+
+            EditText dataApp[];
+
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
+                dataApp=new EditText[]{
+                        findViewById(R.id.item_appliance_data_1),
+                        findViewById(R.id.item_appliance_data_2),
+                        findViewById(R.id.item_appliance_data_3)
+                };
             }
         }
     }
@@ -655,7 +1060,34 @@ public class HouseServeyForm extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull adapterAdriProd.viewHolder holder, int position) {
+            final int finalPosition=position;
 
+            for(int i=0;i<holder.inputData.length;i++){
+
+                final int finalI=i;
+                holder.inputData[i].addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String st=editable.toString();
+
+                        switch (finalI+1){
+                            case 1:serveyEntity.getAgricultural_produce_in_a_normal_year().get(finalPosition).setCrop(st);break;
+                            case 2:serveyEntity.getAgricultural_produce_in_a_normal_year().get(finalPosition).setArea(Double.parseDouble(st));break;
+                            case 3:serveyEntity.getAgricultural_produce_in_a_normal_year().get(finalPosition).setProductivity(Double.parseDouble(st));break;
+                        }
+                    }
+                });
+            }
         }
 
         @Override
@@ -664,8 +1096,17 @@ public class HouseServeyForm extends AppCompatActivity {
         }
 
         public class viewHolder extends RecyclerView.ViewHolder {
+
+            EditText inputData[];
+
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
+
+                inputData=new EditText[]{
+                    findViewById(R.id.item_agri_produce_input_1),
+                    findViewById(R.id.item_agri_produce_input_2),
+                    findViewById(R.id.item_agri_produce_input_3),
+                };
             }
         }
     }
@@ -683,8 +1124,31 @@ public class HouseServeyForm extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull adapterProblem.viewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull adapterProblem.viewHolder holder, @SuppressLint("RecyclerView") int position) {
+            for(int i=0;i<holder.inputData.length;i++){
 
+                final int finalI=i;
+                holder.inputData[i].addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String data=editable.toString();
+                        switch (finalI+1){
+                            case 1:serveyEntity.getMajor_problem_in_village().get(position).setProblem(data);break;
+                            case 2:serveyEntity.getMajor_problem_in_village().get(position).setSolution(data);break;
+                        }
+                    }
+                });
+            }
         }
 
         @Override
@@ -693,8 +1157,15 @@ public class HouseServeyForm extends AppCompatActivity {
         }
 
         public class viewHolder extends RecyclerView.ViewHolder {
+
+            EditText inputData[];
+
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
+                inputData=new EditText[]{
+                        findViewById(R.id.item_problem_input_1),
+                        findViewById(R.id.item_problem_input_2),
+                };
             }
         }
     }

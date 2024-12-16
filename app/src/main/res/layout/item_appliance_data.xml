@@ -49,6 +49,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_appliance_data_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/item_appliances_text_1"
@@ -74,9 +75,10 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_appliance_data_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
+                        android:inputType="number"
                         android:layout_toEndOf="@+id/item_appliances_text_2"
                         android:layout_marginLeft="5dp"/>
 
@@ -100,9 +102,10 @@
                         />
 
                     <EditText
+                        android:id="@+id/item_appliance_data_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
+                        android:inputType="number"
                         android:layout_toEndOf="@+id/item_appliances_text_3"
                         android:layout_marginLeft="5dp"/>
 

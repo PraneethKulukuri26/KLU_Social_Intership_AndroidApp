@@ -206,7 +206,6 @@ public class HouseServeyEntity {
     }
 
    public class family_info{
-        private int sr_no;
         private String Name;
         private int Age;
         private String Sex;
@@ -220,14 +219,6 @@ public class HouseServeyEntity {
         private String MNREGA_Job_Card;
         private String Self_Help_Groups;
         private String Occupations;
-
-        public int getSr_no() {
-            return sr_no;
-        }
-
-        public void setSr_no(int sr_no) {
-            this.sr_no = sr_no;
-        }
 
         public String getName() {
             return Name;
@@ -334,7 +325,7 @@ public class HouseServeyEntity {
         }
     }
 
-    class migration{
+    public class migration{
         private String Did_any_of_them_migrate; //Does any member of the household migrate for Work?
         private int How_many_members;//If Yes How many members of the family migrated
         private double how_many_days_months;//Family migrates for how many days/ months?
@@ -373,7 +364,7 @@ public class HouseServeyEntity {
         }
     }
 
-    class schemes{
+    public class schemes{
         private int PM_jan_dhan_yojana;
         private int sukanya_samridhi_yojana;
         private int mudra_yojana;
@@ -618,7 +609,7 @@ public class HouseServeyEntity {
         }
     }
 
-    class land{
+    public class land{
         private double Total;
         private double Cultivable;
         private double Irrigated_Area;
@@ -675,7 +666,7 @@ public class HouseServeyEntity {
         }
     }
 
-    class Agricultural{
+    public class Agricultural{
 
         private ans Do_you_use_chemical_fertilisers;
         private ans do_you_use_chemical_insecticides;
@@ -791,7 +782,7 @@ public class HouseServeyEntity {
         }
     }
 
-    class livestock{
+    public class livestock{
         private int cows;
         private int buffalo;
         private int sheep;
