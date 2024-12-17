@@ -2208,7 +2208,7 @@
                                     android:id="@+id/form_text_55"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="5)rrigation System:"
+                                    android:text="6)Irrigation System:"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
                                     android:layout_centerVertical="true"
@@ -2650,7 +2650,7 @@
                             android:layout_marginTop="5dp"
                             android:padding="5dp"
                             android:orientation="vertical"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/activity_house_servey_recyclerView4"
