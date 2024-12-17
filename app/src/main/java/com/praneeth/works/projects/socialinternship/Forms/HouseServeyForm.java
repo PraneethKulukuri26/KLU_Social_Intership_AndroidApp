@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IInterface;
 import android.text.Editable;
@@ -34,10 +35,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.praneeth.works.projects.socialinternship.Forms.Entity.HouseServeyEntity;
+import com.praneeth.works.projects.socialinternship.Forms.Entity.ReportDetails;
+import com.praneeth.works.projects.socialinternship.Information.LocalStorage;
 import com.praneeth.works.projects.socialinternship.R;
+import com.praneeth.works.projects.socialinternship.ReportsActivity.SavedReports;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -47,6 +53,8 @@ public class HouseServeyForm extends AppCompatActivity {
 
     HouseServeyEntity serveyEntity;
 
+    LocalStorage localStorage;
+
     View BasicInfo[],ResProfile[],generalInfo[],migrationInfo[],schmeesInfo[],energyInfo,landInfo[],livestock[];
 
     @SuppressLint("MissingInflatedId")
@@ -54,7 +62,10 @@ public class HouseServeyForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_servey_form);
+        localStorage=new LocalStorage(getApplicationContext());
         serveyEntity=new HouseServeyEntity();
+        Log.v("datav",localStorage.loadHouseHoldReports());
+        //localStorage.saveHouseHoldReports("trdd");
 
         BasicInfo=new View[]{
                 findViewById(R.id.servey_form_input_1),//Village
@@ -774,7 +785,58 @@ public class HouseServeyForm extends AppCompatActivity {
                                                                     if(!cou || instanceData.isEmpty() || spinnerObj[14].getSelectedItem().toString().equals("Select")){
                                                                         Toast.makeText(getApplicationContext(),"Incomplete information about Livestock",Toast.LENGTH_SHORT).show();
                                                                     }else{
-                                                                        Log.v("DataShow",new Gson().toJson(serveyEntity));
+                                                                        //Log.v("DataShow",new Gson().toJson(serveyEntity));
+
+                                                                        AlertDialog.Builder builder=new AlertDialog.Builder(HouseServeyForm.this);
+                                                                        builder.setTitle("Confirmation")
+                                                                                .setMessage("Confirm before you save.\nYou Can not edit after words.")
+                                                                                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                                                                                    @Override
+                                                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                        String data=localStorage.loadHouseHoldReports();
+                                                                                        ArrayList<ReportDetails> list;
+                                                                                        if(data==null || data.isEmpty()){
+                                                                                            list=new ArrayList<>();
+                                                                                        }else{
+                                                                                            Log.v("dataStored",data);
+                                                                                            try {
+                                                                                                list = new Gson().fromJson(data, new TypeToken<ArrayList<ReportDetails>>() {
+                                                                                                }.getType());
+                                                                                            }catch (Exception e){
+                                                                                                list=new ArrayList<>();
+                                                                                            }
+                                                                                        }
+
+                                                                                        try {
+                                                                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                                                serveyEntity.setDate_of_Survey(LocalDate.now().toString());
+                                                                                            }
+                                                                                        }catch (Exception e){
+                                                                                            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                                                                                        }
+                                                                                        ReportDetails reportDetails=new ReportDetails();
+                                                                                        reportDetails.setHouseServeyEntity(serveyEntity);
+                                                                                        reportDetails.setName("House Hold Survey - "+serveyEntity.getBlock());
+                                                                                        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                                                                            reportDetails.setDate(LocalDate.now().toString());
+                                                                                        }*/
+
+                                                                                        reportDetails.setStatus("Pending");
+                                                                                        list.add(reportDetails);
+                                                                                        localStorage.saveHouseHoldReports(new Gson().toJson(list));
+
+                                                                                        finish();
+                                                                                    }
+                                                                                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                                                    @Override
+                                                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                                                        dialogInterface.dismiss();
+                                                                                    }
+                                                                                });
+
+                                                                        AlertDialog dialog=builder.create();
+                                                                        dialog.show();
+
                                                                     }
                                                                 }
                                                             }
@@ -928,6 +990,7 @@ public class HouseServeyForm extends AppCompatActivity {
                     public void afterTextChanged(Editable editable) {
                         String dataInsta=editable.toString();
 
+
                         switch (finalI+1){
                             case 1:serveyEntity.getFamily_member_information().get(finalPosition).setName(dataInsta);break;
                             case 2:serveyEntity.getFamily_member_information().get(finalPosition).setAge(Integer.parseInt(dataInsta));break;
@@ -1038,9 +1101,9 @@ public class HouseServeyForm extends AppCompatActivity {
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
                 dataApp=new EditText[]{
-                        findViewById(R.id.item_appliance_data_1),
-                        findViewById(R.id.item_appliance_data_2),
-                        findViewById(R.id.item_appliance_data_3)
+                        itemView.findViewById(R.id.item_appliance_data_1),
+                        itemView.findViewById(R.id.item_appliance_data_2),
+                        itemView.findViewById(R.id.item_appliance_data_3),
                 };
             }
         }
@@ -1103,9 +1166,9 @@ public class HouseServeyForm extends AppCompatActivity {
                 super(itemView);
 
                 inputData=new EditText[]{
-                    findViewById(R.id.item_agri_produce_input_1),
-                    findViewById(R.id.item_agri_produce_input_2),
-                    findViewById(R.id.item_agri_produce_input_3),
+                    itemView.findViewById(R.id.item_agri_produce_input_1),
+                    itemView.findViewById(R.id.item_agri_produce_input_2),
+                    itemView.findViewById(R.id.item_agri_produce_input_3),
                 };
             }
         }
@@ -1163,8 +1226,8 @@ public class HouseServeyForm extends AppCompatActivity {
             public viewHolder(@NonNull View itemView) {
                 super(itemView);
                 inputData=new EditText[]{
-                        findViewById(R.id.item_problem_input_1),
-                        findViewById(R.id.item_problem_input_2),
+                        itemView.findViewById(R.id.item_problem_input_1),
+                        itemView.findViewById(R.id.item_problem_input_2),
                 };
             }
         }

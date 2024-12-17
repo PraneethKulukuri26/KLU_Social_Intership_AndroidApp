@@ -22,6 +22,10 @@ public class HouseServeyEntity {
     private livestock Livestock_number;
     private ArrayList<problem> Major_problem_in_village;
 
+    private String Date_of_Survey;
+
+    private String Surveyed_by;
+
     public HouseServeyEntity(){
         Respondent_Profile=new Profile();
         General_Household_information=new general();
@@ -34,6 +38,22 @@ public class HouseServeyEntity {
         Agricultural_produce_in_a_normal_year=new ArrayList<>();
         Livestock_number=new livestock();
         Major_problem_in_village=new ArrayList<>();
+    }
+
+    public String getDate_of_Survey() {
+        return Date_of_Survey;
+    }
+
+    public void setDate_of_Survey(String date_of_Survey) {
+        Date_of_Survey = date_of_Survey;
+    }
+
+    public String getSurveyed_by() {
+        return Surveyed_by;
+    }
+
+    public void setSurveyed_by(String surveyed_by) {
+        Surveyed_by = surveyed_by;
     }
 
     public void addAgricultural_produce_in_a_normal_year(agri_produce obj){
