@@ -38,7 +38,6 @@ public class SavedReports extends AppCompatActivity {
         adap=new adapter();
         recyclerView.setAdapter(adap);
 
-
         try{
             list = new Gson().fromJson(laLocalStorage.loadHouseHoldReports(), new TypeToken<ArrayList<ReportDetails>>() {
             }.getType());
