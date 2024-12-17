@@ -57,7 +57,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/activity_saved_Recycler_viewed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_reports1"
+                android:padding="10dp"/>
 
         </LinearLayout>
 
