@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Account.LoginActivity">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_height="320dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/sign_in_dialog">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:orientation="vertical"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
+            android:layout_centerInParent="true"
             >
 
             <ImageView
@@ -26,6 +27,7 @@
                 android:scaleType="center"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
+
                 />
 
             <LinearLayout
@@ -36,25 +38,32 @@
                 >
 
                 <EditText
+                    android:id="@+id/login_username"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:inputType="number"
                     android:hint="Enter Your Collage Id"
                     android:paddingLeft="5dp"
+                    android:textSize="16sp"
                     />
 
                 <EditText
+                    android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:hint="Enter Password"
-                    android:paddingLeft="5dp"/>
+                    android:paddingLeft="5dp"
+                    android:textSize="16sp"
+                    />
 
                 <Button
+                    android:id="@+id/login_btn"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:backgroundTint="#D30606"
@@ -62,6 +71,7 @@
                     android:text="Next"
                     android:textColor="@color/white"
                     android:textStyle="bold"
+                    android:textSize="16sp"
                     />
 
             </LinearLayout>
