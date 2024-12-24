@@ -19,4 +19,14 @@ public class LocalStorage {
     public String loadHouseHoldReports(){
         return sharedPreferences.getString("HouseHoldReports","");
     }
+
+    public void saveVillageSurveyForm(String str){
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("VillageSurveyForm",str);
+        editor.apply();
+    }
+
+    public String loadVillageSurveyForm(){
+        return sharedPreferences.getString("VillageSurveyForm","");
+    }
 }

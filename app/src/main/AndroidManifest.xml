@@ -10,16 +10,21 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/sac_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/sac_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialInternship"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".Forms.VillageSurveyForm"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
+
+
+        </activity>
         <activity
             android:name=".ReportsActivity.SavedReports"
             android:exported="true"
@@ -28,11 +33,13 @@
             android:name=".SplachScreen"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Forms.HouseServeyForm"

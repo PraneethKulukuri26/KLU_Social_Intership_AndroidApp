@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.praneeth.works.projects.socialinternship.Forms.HouseServeyForm;
+import com.praneeth.works.projects.socialinternship.Forms.VillageSurveyForm;
 import com.praneeth.works.projects.socialinternship.ReportsActivity.SavedReports;
 import com.praneeth.works.projects.socialinternship.Test.RenderXml;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView newForm,saved_forms;
+    CardView newForm,saved_forms,newVillageForm;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         newForm=findViewById(R.id.click_new_form);
         saved_forms=findViewById(R.id.saved_forms);
+        newVillageForm=findViewById(R.id.click_new_village);
 
         newForm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), SavedReports.class));
+            }
+        });
+
+        newVillageForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), VillageSurveyForm.class));
             }
         });
 

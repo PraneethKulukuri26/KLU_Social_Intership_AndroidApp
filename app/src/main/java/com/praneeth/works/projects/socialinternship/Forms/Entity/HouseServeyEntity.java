@@ -22,6 +22,8 @@ public class HouseServeyEntity {
     private livestock Livestock_number;
     private ArrayList<problem> Major_problem_in_village;
 
+    private waterSource Source_of_Water;
+
     private String Date_of_Survey;
 
     private String Surveyed_by;
@@ -38,6 +40,7 @@ public class HouseServeyEntity {
         Agricultural_produce_in_a_normal_year=new ArrayList<>();
         Livestock_number=new livestock();
         Major_problem_in_village=new ArrayList<>();
+        Source_of_Water=new waterSource();
     }
 
     public String getDate_of_Survey() {
@@ -916,6 +919,94 @@ public class HouseServeyEntity {
         }
     }
 
+    public class waterSource{
+
+        private ans Piped_Water_at_Home;
+        private ans Community_Water_Tap;
+        private ans Hand_Pump;
+        private ans Open_Well;
+        private String Mode_of_Water_Storage;
+
+        private String Any_other_source;
+
+        public waterSource(){
+            Piped_Water_at_Home=new ans();
+            Community_Water_Tap=new ans();
+            Hand_Pump=new ans();
+            Open_Well=new ans();
+        }
+
+
+        public class ans{
+            private String answer;
+            private String Distance;
+
+            public String getAnswer() {
+                return answer;
+            }
+
+            public void setAnswer(String answer) {
+                this.answer = answer;
+            }
+
+            public String getDistance() {
+                return Distance;
+            }
+
+            public void setDistance(String distance) {
+                Distance = distance;
+            }
+        }
+
+        public ans getPiped_Water_at_Home() {
+            return Piped_Water_at_Home;
+        }
+
+        public void setPiped_Water_at_Home(ans piped_Water_at_Home) {
+            Piped_Water_at_Home = piped_Water_at_Home;
+        }
+
+        public ans getCommunity_Water_Tap() {
+            return Community_Water_Tap;
+        }
+
+        public void setCommunity_Water_Tap(ans community_Water_Tap) {
+            Community_Water_Tap = community_Water_Tap;
+        }
+
+        public ans getHand_Pump() {
+            return Hand_Pump;
+        }
+
+        public void setHand_Pump(ans hand_Pump) {
+            Hand_Pump = hand_Pump;
+        }
+
+        public ans getOpen_Well() {
+            return Open_Well;
+        }
+
+        public void setOpen_Well(ans open_Well) {
+            Open_Well = open_Well;
+        }
+
+        public String getMode_of_Water_Storage() {
+            return Mode_of_Water_Storage;
+        }
+
+        public void setMode_of_Water_Storage(String mode_of_Water_Storage) {
+            Mode_of_Water_Storage = mode_of_Water_Storage;
+        }
+
+        public String getAny_other_source() {
+            return Any_other_source;
+        }
+
+        public void setAny_other_source(String any_other_source) {
+            Any_other_source = any_other_source;
+        }
+    }
+
     public void addMember(family_info obj){
         family_member_information.add(obj);
     }
@@ -1054,5 +1145,13 @@ public class HouseServeyEntity {
 
     public void setMajor_problem_in_village(ArrayList<problem> major_problem_in_village) {
         Major_problem_in_village = major_problem_in_village;
+    }
+
+    public waterSource getSource_of_Water() {
+        return Source_of_Water;
+    }
+
+    public void setSource_of_Water(waterSource source_of_Water) {
+        Source_of_Water = source_of_Water;
     }
 }
