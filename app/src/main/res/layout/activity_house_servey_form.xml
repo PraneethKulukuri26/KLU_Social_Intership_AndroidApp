@@ -1489,6 +1489,381 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/base_cardView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/expand_layout_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6. Source of Water (Distance from source in km)"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#232323"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/expand_layout_main_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_66"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Piped Water at Home:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <RadioGroup
+                                    android:id="@+id/waterRadioGroup1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_66"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton1_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Yes"/>
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton1_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="No"/>
+
+                                </RadioGroup>
+
+                                <RelativeLayout
+                                    android:id="@+id/relativeWater1"
+                                    android:layout_below="@+id/waterRadioGroup1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:visibility="gone"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_67"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Distance:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:id="@+id/servey_form_input_40"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_67"/>
+
+
+                                </RelativeLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_69"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Community Water Tap:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <RadioGroup
+                                    android:id="@+id/waterRadioGroup2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_69"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton2_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Yes"/>
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton2_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="No"/>
+
+                                </RadioGroup>
+
+                                <RelativeLayout
+                                    android:id="@+id/relativeWater2"
+                                    android:layout_below="@+id/waterRadioGroup2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:visibility="gone"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_68"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Distance:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:id="@+id/servey_form_input_41"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_68"/>
+
+
+                                </RelativeLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_70"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hand Pump:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <RadioGroup
+                                    android:id="@+id/waterRadioGroup3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_70"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton3_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Yes"/>
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton3_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="No"/>
+
+                                </RadioGroup>
+
+                                <RelativeLayout
+                                    android:id="@+id/relativeWater3"
+                                    android:layout_below="@+id/waterRadioGroup3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:visibility="gone"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_71"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Distance:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:id="@+id/servey_form_input_42"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_71"/>
+
+                                </RelativeLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_72"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Open Well:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <RadioGroup
+                                    android:id="@+id/waterRadioGroup4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_72"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton4_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Yes"/>
+
+                                    <RadioButton
+                                        android:id="@+id/waterRadioButton4_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="No"/>
+
+                                </RadioGroup>
+
+                                <RelativeLayout
+                                    android:id="@+id/relativeWater4"
+                                    android:layout_below="@+id/waterRadioGroup4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:visibility="gone"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/form_text_73"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Distance:"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:layout_centerVertical="true"
+                                        />
+
+                                    <EditText
+                                        android:id="@+id/servey_form_input_43"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toEndOf="@+id/form_text_73"/>
+
+                                </RelativeLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_75"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mode of Water Storage:"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/servey_form_input_45"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_75"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/form_text_76"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Any other source (mention):"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_alignParentTop="true"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/servey_form_input_46"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/form_text_76"/>
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/base_cardView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

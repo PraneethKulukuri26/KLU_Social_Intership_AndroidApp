@@ -143,6 +143,7 @@ public class HouseServeyForm extends AppCompatActivity {
                 findViewById(R.id.expand_layout_9),
                 findViewById(R.id.expand_layout_10),
                 findViewById(R.id.expand_layout_11),
+                findViewById(R.id.expand_layout_12),
         };
 
         LinearLayout layoutLinear[]={
@@ -157,6 +158,7 @@ public class HouseServeyForm extends AppCompatActivity {
                 findViewById(R.id.expand_layout_main_9),
                 findViewById(R.id.expand_layout_main_10),
                 findViewById(R.id.expand_layout_main_11),
+                findViewById(R.id.expand_layout_main_12),
         };
 
         CardView baseCard[]={
@@ -171,6 +173,7 @@ public class HouseServeyForm extends AppCompatActivity {
                 findViewById(R.id.base_cardView9),
                 findViewById(R.id.base_cardView10),
                 findViewById(R.id.base_cardView11),
+                findViewById(R.id.base_cardView12),
         };
 
         for(int i=0;i<expandLayout.length;i++){
@@ -208,6 +211,57 @@ public class HouseServeyForm extends AppCompatActivity {
 
 //        Spinner genderSpinner = findViewById(R.id.gender_spinner);
 
+        EditText waterInput[]=new EditText[]{
+                findViewById(R.id.servey_form_input_40),
+                findViewById(R.id.servey_form_input_41),
+                findViewById(R.id.servey_form_input_42),
+                findViewById(R.id.servey_form_input_43),
+
+                findViewById(R.id.servey_form_input_45),
+                findViewById(R.id.servey_form_input_46),
+
+        };
+
+        RelativeLayout layoutWater[]=new RelativeLayout[]{
+                findViewById(R.id.relativeWater1),
+                findViewById(R.id.relativeWater2),
+                findViewById(R.id.relativeWater3),
+                findViewById(R.id.relativeWater4),
+        };
+
+        RadioGroup waterRadioBtn[]=new RadioGroup[]{
+                findViewById(R.id.waterRadioGroup1),
+                findViewById(R.id.waterRadioGroup2),
+                findViewById(R.id.waterRadioGroup3),
+                findViewById(R.id.waterRadioGroup4),
+        };
+
+        for(int i=0;i<waterRadioBtn.length;i++){
+
+            final int finalI=i;
+            waterRadioBtn[i].setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                    RadioButton radioButton=radioGroup.findViewById(i);
+
+                    String instanceData=radioButton.getText().toString();
+
+                    if(instanceData.equals("Yes")){
+                        layoutWater[finalI].setVisibility(View.GONE);
+                    }else{
+                        layoutWater[finalI].setVisibility(View.VISIBLE);
+                    }
+
+                    switch (finalI+1){
+                        case 1:serveyEntity.getSource_of_Water().getPiped_Water_at_Home().setAnswer(instanceData);break;
+                        case 2:serveyEntity.getSource_of_Water().getCommunity_Water_Tap().setAnswer(instanceData);break;
+                        case 3:serveyEntity.getSource_of_Water().getHand_Pump().setAnswer(instanceData);break;
+                        case 4:serveyEntity.getSource_of_Water().getOpen_Well().setAnswer(instanceData);break;
+                    }
+                }
+            });
+        }
+
         Spinner genderSpinner[]={findViewById(R.id.gender_spinner),findViewById(R.id.gender_spinner2)};
 
 
@@ -223,22 +277,22 @@ public class HouseServeyForm extends AppCompatActivity {
         for(int i=0;i<genderSpinner.length;i++){
             genderSpinner[i].setAdapter(adapter);
 
-            genderSpinner[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    String selectedGender = parent.getItemAtPosition(position).toString();
-
-                    // Show a Toast message for the selected item
-                    if (!selectedGender.equals("Select Gender")) {
-                        Toast.makeText(HouseServeyForm.this, "Selected: " + selectedGender, Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    // Handle the case where no item is selected (optional)
-                }
-            });
+//            genderSpinner[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                @Override
+//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                    String selectedGender = parent.getItemAtPosition(position).toString();
+//
+//                    // Show a Toast message for the selected item
+//                    if (!selectedGender.equals("Select Gender")) {
+//                        Toast.makeText(HouseServeyForm.this, "Selected: " + selectedGender, Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> parent) {
+//                    // Handle the case where no item is selected (optional)
+//                }
+//            });
         }
 
 
@@ -786,6 +840,20 @@ public class HouseServeyForm extends AppCompatActivity {
                                                                         Toast.makeText(getApplicationContext(),"Incomplete information about Livestock",Toast.LENGTH_SHORT).show();
                                                                     }else{
                                                                         //Log.v("DataShow",new Gson().toJson(serveyEntity));
+
+
+                                                                        for(int i=0;i<waterInput.length;i++){
+                                                                            instanceData=waterInput[i].getText().toString();
+
+                                                                            switch (i+1){
+                                                                                case 1:serveyEntity.getSource_of_Water().getPiped_Water_at_Home().setDistance(instanceData);break;
+                                                                                case 2:serveyEntity.getSource_of_Water().getCommunity_Water_Tap().setDistance(instanceData);break;
+                                                                                case 3:serveyEntity.getSource_of_Water().getHand_Pump().setDistance(instanceData);break;
+                                                                                case 4:serveyEntity.getSource_of_Water().getOpen_Well().setDistance(instanceData);break;
+                                                                                case 5:serveyEntity.getSource_of_Water().setMode_of_Water_Storage(instanceData);break;
+                                                                                case 6:serveyEntity.getSource_of_Water().setAny_other_source(instanceData);break;
+                                                                            }
+                                                                        }
 
                                                                         AlertDialog.Builder builder=new AlertDialog.Builder(HouseServeyForm.this);
                                                                         builder.setTitle("Confirmation")
